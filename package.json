@@ -1,0 +1,35 @@
+{
+  "name": "scriptx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scriptx-get-schema.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^10.1.0",
+    "@asyncapi/parser": "^1.18.1",
+    "@google-cloud/pubsub": "^3.5.2",
+    "@openapi-contrib/json-schema-to-openapi-schema": "^2.2.4",
+    "@openapi-contrib/openapi-schema-to-json-schema": "^3.2.0",
+    "chance": "^1.1.11",
+    "express": "^4.18.2",
+    "firebase": "^10.5.0",
+    "firebase-admin": "^11.11.0",
+    "json-schema-faker": "^0.5.0-rcv.46",
+    "jsonpath-plus": "^7.2.0",
+    "jsonschema": "^1.4.1",
+    "lodash": "^4.17.21",
+    "mysql": "^2.18.1",
+    "node-rest-client": "^3.1.1",
+    "prompts": "^2.4.2",
+    "prop-search": "^1.1.8",
+    "uuid": "^9.0.0",
+    "yaml": "^2.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

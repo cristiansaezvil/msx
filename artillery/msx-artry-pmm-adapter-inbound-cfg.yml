@@ -1,0 +1,19 @@
+config:
+  target: https://cloud-run-pmm-adapter-4g46o2lmaq-uk.a.run.app
+  processor: XReadDummy.js
+  phases:
+    - duration: 10
+      arrivalRate: 20
+      name: pmm-adapter-inbound
+  defaults:
+    headers:
+      Content-Type: application/json
+      Authorization: Bearer
+        eyJhbGciOiJSUzI1NiIsImtpZCI6IjgyMjgzOGMxYzhiZjllZGNmMWY1MDUwNjYyZTU0YmNiMWFkYjViNWYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMjU1NTk0MDU1OS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjMyNTU1OTQwNTU5LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAxMDc5NTk1ODAwMjQwMjAyMTEyIiwiaGQiOiJmYWxhYmVsbGEuY2wiLCJlbWFpbCI6ImNhc2FlenZpbEBmYWxhYmVsbGEuY2wiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IlNqZzRhMl9CMVo0amRxU2l2TWpIR3ciLCJpYXQiOjE2ODQ0MjYyMzUsImV4cCI6MTY4NDQyOTgzNX0.ft9EFomgZOwRWlKVe__6GTIZ5HFCCmGi6cn_7vaVPOq5E2up_5gjdfoFOAaP_kHFDJvBeW7H8SrbknJ4WojU-xZkV2ruwHi-TpBYncx11bog0t0JAABN9xJl64lCva6JFwFwrV7v_ypnsxTbdsgH3i_Rf_3m089CQcAIAtJ7fmAMKZLbbPbYD8ibwTAoOOiiTZE4tPJjC3qdOx1XYqv9VxJbll83RbGyUrN1FNNZPtL7Ei7q2N81mI3Z60XyZ6DDj1yL4c893GSdumbmvRDpLP7iW5tZCtu05X_0mFscBrPKKBoDNutV_Gn47la8k66wo5AGzoBxCT5mX3T7XrAnPw
+scenarios:
+  - name: pmm-adapter-inbound/pmm-adapter-inbound
+    beforeScenario: XReadDummy
+    flow:
+      - post:
+          url: /prch-pmm/broker
+          json: "{{requestBody}}"

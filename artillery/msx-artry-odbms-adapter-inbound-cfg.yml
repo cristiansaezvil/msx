@@ -1,0 +1,20 @@
+config:
+  target: http://localhost:8080 ##https://cloud-run-odbms-adapter-4g46o2lmaq-uk.a.run.app
+  processor: XReadDummy.js
+  phases:
+    - duration: 10
+      arrivalRate: 20
+      maxVusers: 50
+      name: odbms-adapter-inbound
+  defaults:
+    headers:
+      Content-Type: application/json
+      Authorization: Bearer
+        eyJhbGciOiJSUzI1NiIsImtpZCI6IjgyMjgzOGMxYzhiZjllZGNmMWY1MDUwNjYyZTU0YmNiMWFkYjViNWYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMjU1NTk0MDU1OS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjMyNTU1OTQwNTU5LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAxMDc5NTk1ODAwMjQwMjAyMTEyIiwiaGQiOiJmYWxhYmVsbGEuY2wiLCJlbWFpbCI6ImNhc2FlenZpbEBmYWxhYmVsbGEuY2wiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6InpHb2dpMm4yMnlZdDdXTkV4cWZsTHciLCJpYXQiOjE2ODQ0MjkwMzcsImV4cCI6MTY4NDQzMjYzN30.fsv__CPfaPcX3yPQtGncW88NwK_n6KWCXyQZ76llIFPA8H0gLaUtqYHhoMLt-a4ofDtIWLq3Zd076-kBW5t3mtknX3AW3iUavtqY7qT1SXVnDLLKKhcm5DqE_i4oGU88XhV3UY6_U_OQJisIWZcMpfStypVFLM-rnQhTyJsJtHQtfzX-sL8vu9hH-e0b7k8J44zpP5eLR3GjlW79OBL4QdfoZZ2sIsBCo-Q8O5rMysdczmmx4gr37S5Si6k7SJ1xq_f15OFlD3sofMeWWc0cM9OidaDsJb0616F7O4dmDGsNOMJCr_iLOj4FSpel7dEDBdh-WtGPP--20r3b9AVz3w
+scenarios:
+  - name: odbms-adapter-inbound/odbms-adapter-inbound
+    beforeScenario: XReadDummy
+    flow:
+      - post:
+          url: /prch-odbms/broker
+          json: "{{requestBody}}"

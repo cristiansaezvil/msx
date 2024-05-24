@@ -1,0 +1,19 @@
+config:
+  target: https://cloud-run-srx-adapter-4g46o2lmaq-uk.a.run.app
+  processor: XReadDummy.js
+  phases:
+    - duration: 10
+      arrivalRate: 20
+      name: srx-adapter-inbound
+  defaults:
+    headers:
+      Content-Type: application/json
+      Authorization: Bearer
+        eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk2OTcxODA4Nzk2ODI5YTk3MmU3OWE5ZDFhOWZmZjExY2Q2MWIxZTMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMjU1NTk0MDU1OS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjMyNTU1OTQwNTU5LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAxMDc5NTk1ODAwMjQwMjAyMTEyIiwiaGQiOiJmYWxhYmVsbGEuY2wiLCJlbWFpbCI6ImNhc2FlenZpbEBmYWxhYmVsbGEuY2wiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6Ii1MUk53bWh6NV84aVZYaVVmdDRCWnciLCJpYXQiOjE2ODIwMDgxNTUsImV4cCI6MTY4MjAxMTc1NX0.d9xkOjV5-4Y8dMFqncQfTuFvCeRxKxzjloH0ybUO2Ig9GT-bgsnvmAtHgRDRcocLwl7OyBwGtk6eaCRi5EhsyKXwKgQ2jIuVVN2q00YqVzs7eNlYamhf72uNZGcCdO6Ocx9xmkf9W_KSpvysDWQF95ukyuzZciz9LFNdVOet9G6DcANYSS_zNfNHnFr5kteGEeIVUlgn15bp6pNsa5lBC3OQN962gJXNG6GdJeWOzeWveWDtu_f6B587cD00nA2PXcE9Tgseq7IdiXHRwKmztwYPXcbmPT6lthYGUc69K5x4WmS_NendqJEKcaiZ3PQ70o0mr4vZw8zTSUitgjbR4A
+scenarios:
+  - name: srx-adapter-inbound/srx-adapter-inbound
+    beforeScenario: XReadDummy
+    flow:
+      - post:
+          url: /prch-srx/broker
+          json: "{{requestBody}}"
