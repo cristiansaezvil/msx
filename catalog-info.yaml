@@ -1,0 +1,13 @@
+apiVersion: msx.io/v1alpha1
+kind: Component
+metadata:
+  name: mxs.io
+  description: Application for the creation, configuration and testing of microservices
+  # Example for optional annotations
+  # annotations:
+  #   github.com/project-slug: backstage/backstage
+  #   backstage.io/techdocs-ref: dir:.
+spec:
+  type: script
+  owner: cristiansaezvil
+  lifecycle: experimental
